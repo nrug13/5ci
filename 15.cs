@@ -1,8 +1,7 @@
-﻿using System;
-using System.Linq;
+using System;
 using System.Text.RegularExpressions;
 
-namespace _15
+namespace _7
 {
     internal class Program
     {
@@ -16,52 +15,41 @@ namespace _15
             //o zaman bu metnde butun { c}
             //            simvollari yox et ve
             //neticede alinan metn zerkalni olub olmadigini yoxla.
-            string x = "caac";
-            char[]y=x.ToCharArray();
+            string x = "bac";
+            char[] y = x.ToCharArray();
+            int n = x.Length;
 
-            
-           
-            if (x.Contains('a')==true && x.Contains('b') == false && x.Contains('c') == true)
+
+            if (x.Contains('a') == true && x.Contains('b') != true && x.Contains('c') == true)
             {
-                if (x[0]==y[0])
-                {
-                    for (int i = 0; i < x.Length-1; i++)
+                  char[] q1 = x.ToCharArray();
+                    int flag = 0;
+                    for (int i = 0; i <= n / 2 && n != 0; i++)
                     {
-                        if (x[i] == 'a' && x[i + 1] == 'a')
+
+                        if (x[i] != x[n - i - 1]&& (x[i]=='a'&& x[i+1]=='a'))
                         {
-                           x= Removec(x);
+                            flag = 1;
+                            break;
 
                         }
                         else
                         {
-                            Console.WriteLine("yanasi a yoxdur");
+                        Removec(x);
+                        
                         }
-                        if (x == x.ToCharArray().Reverse().ToString())
-                        {
-                            Console.WriteLine("guzgu eksidir");
-                        }
-
-                       
                     }
-                }
-                else
-                {
-                    Console.WriteLine("ilk ve son simvol eyni deyil");
-                }
+                Console.WriteLine($"sertler odendi");
             }
             else
             {
                 Console.WriteLine("emeliyyati heyata kecirmek ucun lazimi herfler yoxdur");
             }
-            
-           
-
         }
         public static string Removec(string key)
         {
             return Regex.Replace(key, "[c]", "");
         }
-        
 
-    }
-}
+    } }
+  
